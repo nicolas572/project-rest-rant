@@ -6,6 +6,8 @@ let express = require('express')
 //initialize express
 let app = express()
 
+app.use('/places', require('./controllers/places'))
+
 app.get('/', function (req, res){
     res.send('Hello World')
 })
