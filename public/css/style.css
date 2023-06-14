@@ -1,11 +1,17 @@
 h1 {
     text-align: center;
     color: cornflowerblue;
-  }
-
+}
+h2, h3, h4 {
+    text-align: center;
+    color: orange
+}
 img {
     height: 60vh;
-    width: 80vw;
+    width: 45vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 nav {
