@@ -3,12 +3,26 @@ const Def = require('../default')
 const comments = require('../../models/comment')
 
 function show (data) {
-    let comments= (
+    let comments = (
         <h3 className='inactive'>
             No Comments Yet!
         </h3>
     )
+    let rating = (
+        <h3 className='inactive'>
+            Not Yet Rated
+        </h3>
+    )
     if(data.place.comments.length) {
+        let sumRatings = data.place.comments.reduce ((tot, c) => {
+            return tot + c.stars
+        }, 0)
+        let averageRating = sumRatings / data.place.comments.length
+        rating = (
+            <h3>
+                {Math.round(averageRating)} stars
+            </h3>
+        )
         comments = data.place.comments.map(c => {
             return (
                 <div className='border'>
@@ -30,7 +44,7 @@ function show (data) {
                 <h2>
                     Rating
                 </h2>
-                <p>Not Rated</p>
+                {rating}
             </div>
             <div className='row'>
                 <div className='col-sm-6'>
@@ -73,7 +87,7 @@ function show (data) {
                 </div>
                 <div className="form-group col-sm-4">
                   <label htmlFor="stars">⭐️ Star Rating</label>
-                  <input type="range" step="1" min="1" max="5" id="stars" name="stars" className="form-control" />
+                  <input type="range" step="0.5" min="1" max="5" id="stars" name="stars" className="form-control" />
                 </div>
                 <div className="col-sm-2">
                   <label className="form-check-label" htmlFor="rant" id="rant-checkbox">Rant?</label>
