@@ -102,7 +102,7 @@ function show (data) {
               <input type="submit" className="btn btn-primary" value="Add Comment" />
             </form>
             </div>  
-            <a href={`/places/${data.id}/edit`} className='btn btn-warning'>
+            <a href={`/places/${data.place.id}/edit`} className='btn btn-warning'>
             <i className="bi bi-pencil"></i> Edit
             </a>
             <form method="POST" action={`/places/${data.place.id}?_method=DELETE`}>
